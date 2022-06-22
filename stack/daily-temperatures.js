@@ -11,7 +11,7 @@ const dailyTemperatures = function (T) {
   const arr = Array.from({ length: len }).fill(0)
 
   // 遍历T
-  for (let i = 0; i < len; i++) {
+  for (let i = 1; i < len; i++) {
     let temp = T[i]
     // 使用temp比较栈顶，如果栈顶值小，出栈（计算日期差，并存储），重复操作
     // stack[count - 1]代表栈顶值
