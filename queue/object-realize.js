@@ -1,8 +1,9 @@
 class Queue {
   constructor() {
-    // 用于存储队列数据
-    this.queue = []
+    this.queue = {}
     this.count = 0
+    // 记录队首的键
+    this.head = 0
   }
   // 入队
   enQueue(item) {
@@ -13,10 +14,11 @@ class Queue {
     if (this.isEmpty()) {
       return
     }
-    // 删除queue的第一个元素
-    // Reflect.deleteProperty(this.queue, 0) // 会形成empty空位，不能实现
+    const headData = this.queue[this.head]
+    Reflect.deleteProperty(this.queue, this.head)
+    this.head++
     this.count--
-    return this.queue.shift()
+    return headData
   }
   isEmpty() {
     return this.count === 0
@@ -26,15 +28,15 @@ class Queue {
     if (this.isEmpty()) {
       return
     }
-    return this.queue[0]
+    return this.queue[this.head]
   }
   size() {
     return this.count
   }
   clear() {
-    // this.queue = []
-    this.queue.length = 0
+    this.queue = {}
     this.count = 0
+    this.head = 0
   }
 }
 
