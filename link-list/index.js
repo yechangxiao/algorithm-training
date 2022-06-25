@@ -42,6 +42,18 @@ class LinkedList {
     }
     this.count++
   }
+  // 根据索引获取节点
+  get(index) {
+    if (this.count === 0 || index < 0 || index > this.count) {
+      return
+    }
+    // 迭代链表
+    let cur = this.head
+    for (let i = 0; i < index; i++) {
+      cur = this.head.next
+    }
+    return cur
+  }
 }
 
 const l = new LinkedList()
