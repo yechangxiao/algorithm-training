@@ -30,6 +30,18 @@ class LinkedList {
     }
     this.count++
   }
+  // 从首部添加节点
+  addAtHead(value) {
+    const node = new LinkedNode(value)
+    if (this.count === 0) {
+      this.head = node
+    } else {
+      // 将node添加到head的前面
+      node.next = this.head
+      this.head = node
+    }
+    this.count++
+  }
 }
 
 const l = new LinkedList()
