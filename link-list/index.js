@@ -54,6 +54,40 @@ class LinkedList {
     }
     return cur
   }
+  // 根据索引添加节点
+  addAtIndex(value, index) {
+    if (this.count === 0) {
+      return
+    }
+    // 添加到尾部
+    if (index >= this.count) {
+      return this.addAtTail(value)
+    }
+    // 如果index <= 0，添加到头部
+    if (index <= 0) {
+      return this.addAtHead(value)
+    }
+    // 正常区间
+    const prev = this.get(index - 1)
+    const next = prev.next
+    const node = new LinkedNode(value)
+    prev.next = node
+    node.next = next
+    this.count++
+  }
+  // 根据索引删除节点
+  removeAtIndex(index) {
+    if (this.count === 0 || index < 0 || index >= this.count) {
+      return
+    }
+    if (index === 0) {
+      this.head = this.head.next
+    } else {
+      const prev = this.get(index - 1)
+      prev.next = prev.next.next
+    }
+    this.count--
+  }
 }
 
 const l = new LinkedList()
